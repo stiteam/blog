@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// HTML5 History模式后端支持插件
+// https://github.com/bripkens/connect-history-api-fallback
+var history = require('connect-history-api-fallback');
+
 var index = require('./routes/index');
 
 var app = express();
@@ -19,8 +23,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(history({
+    index: '/'
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use('/api', function(req, res, next) {
+//     res.json({
+//         code: 1
+//     })
+// });
 app.use('/', index);
 
 // catch 404 and forward to error handler

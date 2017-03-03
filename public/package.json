@@ -9,7 +9,8 @@
     "require-css": "^0.1.10",
     "requirejs": "^2.3.3",
     "text": "github:requirejs/text",
-    "vue": "^2.2.1"
+    "vue": "^2.2.1",
+    "vue-router": "^2.3.0"
   },
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-amd": "^6.18.0",

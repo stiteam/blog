@@ -5,14 +5,29 @@
  * @time: 2017年03月02日17:21:58
  */
 
-import 'css!./commons/reset.min';
+// import 'css!./commons/reset.min';
 
 import template from 'text!./view.html';
 import Vue from 'vue';
+import VueRouter from 'vue-router';
+import home from './apps/home/index';
+import notFound from './components/notFound/index';
+
+Vue.use(VueRouter);
 
 let app = new Vue({
 
-    el: '#wrap',
+    el: '#app',
+
+    router: new VueRouter({
+        mode: 'history',
+        routes: [
+            { path: '/', component: home },
+            { path: '/home', component: home },
+            { path: '*', component: notFound }
+            // { path: '/bar', component: Bar }
+        ]
+    }),
 
     data() {
         return {

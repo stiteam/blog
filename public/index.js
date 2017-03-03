@@ -23,6 +23,10 @@ require.config({
         name: 'css',
         location: 'node_modules/require-css',
         main: 'css.min'
+    }, {
+        name: 'vue-router',
+        location: 'node_modules/vue-router',
+        main: 'dist/vue-router.min'
     }]
 });
 
