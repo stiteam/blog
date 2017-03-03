@@ -1,4 +1,4 @@
-define(['exports', 'text!./view.html', 'vue', 'vue-router', './apps/home/index', './components/notFound/index'], function (exports, _view, _vue, _vueRouter, _index, _index3) {
+define(['exports', 'text!./view.html', 'vue', 'vue-router', './apps/home/index', './components/notFound/index', 'css!./commons/reset.min'], function (exports, _view, _vue, _vueRouter, _index, _index3) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -21,14 +21,14 @@ define(['exports', 'text!./view.html', 'vue', 'vue-router', './apps/home/index',
         };
     }
 
-    _vue2.default.use(_vueRouter2.default); /**
-                                             * App根组件
-                                             * 功能: 负责主视图的切换，错误页面处理
-                                             * @author: lzhbupt@163.com
-                                             * @time: 2017年03月02日17:21:58
-                                             */
+    /**
+     * App根组件
+     * 功能: 负责主视图的切换，错误页面处理
+     * @author: lzhbupt@163.com
+     * @time: 2017年03月02日17:21:58
+     */
 
-    // import 'css!./commons/reset.min';
+    _vue2.default.use(_vueRouter2.default);
 
     var app = new _vue2.default({
 

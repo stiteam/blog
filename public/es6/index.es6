@@ -5,7 +5,7 @@
  * @time: 2017年03月02日17:21:58
  */
 
-// import 'css!./commons/reset.min';
+import 'css!./commons/reset.min';
 
 import template from 'text!./view.html';
 import Vue from 'vue';
