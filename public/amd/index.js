@@ -1,4 +1,4 @@
-define(['exports', 'text!./view.html', 'vue'], function (exports, _view, _vue) {
+define(['exports', 'text!./view.html', 'vue', 'css!./commons/reset.min'], function (exports, _view, _vue) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -15,23 +15,31 @@ define(['exports', 'text!./view.html', 'vue'], function (exports, _view, _vue) {
         };
     }
 
-    /**
-     * App根组件
-     * 功能: 负责主视图的切换，错误页面处理
-     * @author: lzhbupt@163.com
-     * @time: 2017年03月02日17:21:58
-     */
-
     var app = new _vue2.default({
 
         el: '#wrap',
 
+        data: function data() {
+            return {
+                a: 1
+            };
+        },
+
+
         template: _view2.default,
 
         created: function created() {
-            console.log('a');
+            console.log(this.a);
+        },
+        mounted: function mounted() {
+            console.log('b');
         }
-    });
+    }); /**
+         * App根组件
+         * 功能: 负责主视图的切换，错误页面处理
+         * @author: lzhbupt@163.com
+         * @time: 2017年03月02日17:21:58
+         */
 
     exports.default = app;
 });
