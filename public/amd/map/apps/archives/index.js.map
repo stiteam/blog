@@ -1,0 +1,1 @@
+{"version":3,"sources":["apps/archives/index.es6"],"names":["template"],"mappings":";;;;;;;;;;;;;;;oBASe;;AAEXA;;AAFW,G","file":"../../../apps/archives/index.js","sourcesContent":["/**\n * 归档视图\n * 功能: 展示归档视图\n * @author: lzhbupt@163.com\n * @time: 2017年03月03日15:07:00\n */\n\nimport template from 'text!./view.html';\n\nexport default {\n\n    template,\n\n}"]}

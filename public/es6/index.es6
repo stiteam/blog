@@ -6,11 +6,17 @@
  */
 
 import 'css!./commons/reset.min';
+import 'css!./style.min';
 
 import template from 'text!./view.html';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import home from './apps/home/index';
+import archives from './apps/archives/index';
+import tags from './apps/tags/index';
+import about from './apps/about/index';
+import board from './apps/board/index';
+import article from './components/article/index';
 import notFound from './components/notFound/index';
 
 Vue.use(VueRouter);
@@ -22,16 +28,37 @@ let app = new Vue({
     router: new VueRouter({
         mode: 'history',
         routes: [
-            { path: '/', component: home },
-            { path: '/home', component: home },
-            { path: '*', component: notFound }
-            // { path: '/bar', component: Bar }
+            {
+                path: '/',
+                component: home
+            }, {
+                path: '/home',
+                component: home
+            }, {
+                path: '/archives',
+                component: archives
+            }, {
+                path: '/tags',
+                component: tags
+            }, {
+                path: '/about',
+                component: about
+            }, {
+                path: '/board',
+                component: board
+            }, {
+                path: '/article/:id',
+                component: article
+            }, {
+                path: '*',
+                component: notFound
+            }
         ]
     }),
 
     data() {
         return {
-            a: 1
+            a: 'created'
         }
     },
 
@@ -42,7 +69,7 @@ let app = new Vue({
     },
 
     mounted() {
-        console.log('b');
+        console.log('mounted');
     }
 
 });
