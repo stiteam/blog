@@ -27,6 +27,10 @@ require.config({
         name: 'vue-router',
         location: 'node_modules/vue-router',
         main: 'dist/vue-router.min'
+    }, {
+        name: 'vuex',
+        location: 'node_modules/vuex',
+        main: 'dist/vuex.min'
     }]
 });
 

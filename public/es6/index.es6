@@ -11,6 +11,7 @@ import 'css!./style.min';
 import template from 'text!./view.html';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 import home from './apps/home/index';
 import archives from './apps/archives/index';
 import tags from './apps/tags/index';
@@ -20,8 +21,19 @@ import article from './components/article/index';
 import notFound from './components/notFound/index';
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
-let app = new Vue({
+const store = new Vuex.Store({
+
+    state: {
+    },
+
+    mutations: {
+    }
+    
+})
+
+const app = new Vue({
 
     el: '#app',
 
