@@ -1,1 +1,0 @@
-{"version":3,"sources":["components/article/index.es6"],"names":["template"],"mappings":";;;;;;;;;;;;;;;oBASe;;AAEXA;;AAFW,G","file":"../../../components/article/index.js","sourcesContent":["/**\n * 首页视图\n * 功能: 文章页面\n * @author: lzhbupt@163.com\n * @time: 2017年03月05日18:20:20\n */\n\nimport template from 'text!./view.html';\n\nexport default {\n\n    template\n\n}"]}

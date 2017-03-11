@@ -1,8 +1,9 @@
-# OS generated files #  
-###################### 
-.DS_Store  
-.DS_Store?  
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
 
-# web build files #  
-###################### 
+# web build files #
+######################
 node_modules/
+amd/
