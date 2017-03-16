@@ -13,7 +13,6 @@
 
         .sti-header-title {
             text-decoration: none;
-            display: block;
             height: 80px;
             background-color: #222;
             color: #FFF;
@@ -24,6 +23,11 @@
 
             .sti-header-name {
                 margin: 20px auto;
+            }
+
+            .sti-header-collapse {
+                cursor: pointer;
+                display: none;
             }
         }
 
@@ -121,7 +125,62 @@
 
     .sti-content {
         height: 1000px;
+        padding: 20px;
         background-color: #FFF;
         margin-left: 260px;
+    }
+
+    @media (max-width: 960px) {
+        width: 100%;
+
+        .sti-header {
+            float: none;
+            /*position: fixed;
+            top: 0;*/
+            width: 100%;
+
+            .sti-header-title {
+                height: 60px;
+                line-height: 40px;
+
+                .sti-header-name {
+                    margin: 10px auto;
+                }
+
+                .sti-header-collapse {
+                    display: block;
+                    color: #fff;
+                    position: absolute;
+                    right: 16px;
+                    top: 16px;
+
+                    .sti-header-collapse-bar {
+                        display: block;
+                        width: 22px;
+                        height: 2px;
+                        background: #555;
+                        border-radius: 1px;
+                        background-color: #fff;
+                        margin: 5px auto;
+                    }
+                }
+            }
+
+            .sti-header-menu {
+                display: none;
+            }
+
+            .sti-header-menu-show {
+                display: block;
+            }
+
+            .sti-header-info {
+                display: none;
+            }
+        }
+
+        .sti-content {
+            margin-left: 0px;
+        }
     }
 }

@@ -2,14 +2,19 @@
     <div class="sti-header">
 
         <!-- 团队名字展示 -->
-        <a class="sti-header-title" href="/">
+        <div class="sti-header-title">
             <div class="sti-header-name">
                 STI team
             </div>
-        </a>
+            <div class="sti-header-collapse" @click="collapse">
+                <div class="sti-header-collapse-bar"></div>
+                <div class="sti-header-collapse-bar"></div>
+                <div class="sti-header-collapse-bar"></div>
+            </div>
+        </div>
 
         <!-- 菜单 -->
-        <ul class="sti-header-menu">
+        <ul class="sti-header-menu" :class="showMenu?'sti-header-menu-show':''">
             <li v-for="app in appMenu">
                 <router-link v-text="app.name" :to="app.url"></router-link>
             </li>

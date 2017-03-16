@@ -23,6 +23,8 @@ import board from './apps/board/index';
 import article from './components/article/index';
 import notFound from './components/notFound/index';
 
+import $ from 'jQuery';
+
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
@@ -73,6 +75,7 @@ const app = new Vue({
 
     data() {
         return {
+            showMenu: false,
             appState: [
                 {
                     name: '日志',
@@ -112,6 +115,14 @@ const app = new Vue({
                 url: '/board'
             }
         ]
+    },
+
+    methods: {
+
+        collapse() {
+            this.showMenu = !this.showMenu;
+        }
+
     },
 
     mounted() {
