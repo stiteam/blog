@@ -1,3 +1,127 @@
 .sti-container {
     min-height: 100%;
+    width: 960px;
+    margin: auto auto;
+
+    .sti-header {
+        /*position: fixed;
+        top: 0px;
+        overflow-y: auto;
+        height: 100%;*/
+        float: left;
+        width: 240px;
+
+        .sti-header-title {
+            text-decoration: none;
+            display: block;
+            height: 80px;
+            background-color: #222;
+            color: #FFF;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            overflow: auto;
+
+            .sti-header-name {
+                margin: 20px auto;
+            }
+        }
+
+        .sti-header-menu {
+            background-color: #FFF;
+            padding-top: 20px;
+            padding-bottom: 15px;
+
+            li {
+                height: 40px;
+                line-height: 30px;
+                color: #000;
+
+                a {
+                    display: block;
+                    text-decoration: none;
+                    padding: 5px 20px;
+                    color: #000;
+                    font-size: 13px;
+                
+                    &.router-link-active {
+                        background-color: #F9F9F9;
+                        position: relative;
+
+                        &:after {
+                            content: " ";
+                            position: absolute;
+                            top: 50%;
+                            margin-top: -3px;
+                            right: 15px;
+                            width: 6px;
+                            height: 6px;
+                            border-radius: 50%;
+                            background-color: #bbb;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sti-header-info {
+            padding: 20px;
+            background-color: #FFF;
+            /*height: 20px;*/
+            img {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .sti-header-info-name {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
+            .sti-header-info-intro {
+                text-align: center;
+                color: #999;
+                font-size: 13px;
+            }
+
+            .sti-header-info-state {
+                display: flex;
+
+                li {
+                    position: relative;
+                    flex: 1;
+                    text-align: center;
+                        
+                    a {
+                        text-decoration: none;
+
+                        p {
+                            color: #000;
+                            margin-bottom: 0px;
+                        }
+                    }
+
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        width: 1px;
+                        background-color: #ccc;
+                    }
+
+                    &:last-child:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .sti-content {
+        height: 1000px;
+        background-color: #FFF;
+        margin-left: 260px;
+    }
 }

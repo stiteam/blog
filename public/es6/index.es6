@@ -7,16 +7,19 @@
 
 import 'css!./commons/reset.min';
 import 'css!./style.min';
+import 'css!../node_modules/bootstrap/dist/css/bootstrap.min';
 
 import template from 'text!./view.html';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import home from './apps/home/index';
+
 import archives from './apps/archives/index';
 import tags from './apps/tags/index';
 import about from './apps/about/index';
 import board from './apps/board/index';
+
 import article from './components/article/index';
 import notFound from './components/notFound/index';
 
@@ -31,7 +34,7 @@ const store = new Vuex.Store({
     mutations: {
     }
     
-})
+});
 
 const app = new Vue({
 
@@ -70,18 +73,48 @@ const app = new Vue({
 
     data() {
         return {
-            a: 'created'
+            appState: [
+                {
+                    name: '日志',
+                    count: 0,
+                    url: '/archives'
+                }, {
+                    name: '分类',
+                    count: 0,
+                    url: 'javascript:;'
+                }, {
+                    name: '标签',
+                    count: 0,
+                    url: '/tags'
+                }
+            ]
         }
     },
 
     template,
 
     created() {
-        console.log(this.a);
+        this.appMenu = [
+            {
+                name: '首页',
+                url: '/home'
+            }, {
+                name: '归档',
+                url: '/archives'
+            }, {
+                name: '标签',
+                url: '/tags'
+            }, {
+                name: '关于',
+                url: '/about'
+            }, {
+                name: '留言',
+                url: '/board'
+            }
+        ]
     },
 
     mounted() {
-        console.log('mounted');
     }
 
 });
