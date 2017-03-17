@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var history = require('connect-history-api-fallback');
 
 var index = require('./routes/index');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -26,11 +27,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', function(req, res, next) {
-    res.json({
-        code: 1
-    })
-});
+app.use('/api', api);
 
 app.use(history({
     index: '/'
