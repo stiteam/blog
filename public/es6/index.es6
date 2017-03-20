@@ -19,6 +19,7 @@ import archives from './apps/archives/index';
 import tags from './apps/tags/index';
 import about from './apps/about/index';
 import board from './apps/board/index';
+import admin from './apps/admin/index';
 
 import article from './components/article/index';
 import notFound from './components/notFound/index';
@@ -64,6 +65,9 @@ const app = new Vue({
                 path: '/board',
                 component: board
             }, {
+                path: '/admin',
+                component: admin
+            }, {
                 path: '/article/:id',
                 component: article
             }, {
@@ -75,6 +79,7 @@ const app = new Vue({
 
     data() {
         return {
+            isAdmin: false,
             showMenu: false,
             appState: [
                 {
@@ -96,7 +101,23 @@ const app = new Vue({
 
     template,
 
+    watch: {
+        $route(val, oldval) {
+            console.log(val.path);
+            if (val.path == '/admin') {
+                this.isAdmin = true;
+            } else {
+                this.isAdmin = false;
+            }
+        }
+    },
+
     created() {
+
+        if (this.$route.path == '/admin') {
+            this.isAdmin = true;
+        }
+
         this.appMenu = [
             {
                 name: '首页',

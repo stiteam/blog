@@ -1,5 +1,5 @@
 <div class="sti-container">
-    <div class="sti-header">
+    <div class="sti-header" v-if="!isAdmin">
 
         <!-- 团队名字展示 -->
         <div class="sti-header-title">
@@ -36,7 +36,7 @@
         </div>
 
     </div>
-    <div class="sti-content">
+    <div class="sti-content" :class="isAdmin?'sti-content-admin':''">
         <router-view></router-view>
     </div>
 </div>

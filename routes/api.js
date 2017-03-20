@@ -15,12 +15,12 @@ router.get('/getArticle/:id', function(req, res, next) {
             // console.log(err);
         } else {
             // console.log(article);
-            Article.fetch((err, articles) => {
+            Article.fetch((err, article) => {
                 if (err) {
                     console.log(err);
                 } else {
                     res.json({
-                        data: articles
+                        data: article
                     })
                 }
             })
