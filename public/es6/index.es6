@@ -13,16 +13,16 @@ import template from 'text!./view.html';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
-import home from './apps/home/index';
 
-import archives from './apps/archives/index';
-import tags from './apps/tags/index';
-import about from './apps/about/index';
-import board from './apps/board/index';
-import admin from './apps/admin/index';
+// import home from './apps/home/index';
+// import archives from './apps/archives/index';
+// import tags from './apps/tags/index';
+// import about from './apps/about/index';
+// import board from './apps/board/index';
+// import admin from './apps/admin/index';
 
-import article from './components/article/index';
-import notFound from './components/notFound/index';
+// import article from './components/article/index';
+// import notFound from './components/notFound/index';
 
 import $ from 'jQuery';
 
@@ -39,6 +39,14 @@ const store = new Vuex.Store({
     
 });
 
+function asyncLoad(url) {
+    return (resolve) => {
+        require([url], function (comp) {
+            resolve(comp.default);
+        });
+    }
+}
+
 const app = new Vue({
 
     el: '#app',
@@ -48,38 +56,44 @@ const app = new Vue({
         routes: [
             {
                 path: '/',
-                component: home
+                component: asyncLoad('amd/apps/home/index')
             }, {
                 path: '/home',
-                component: home
+                component: asyncLoad('amd/apps/home/index')
             }, {
                 path: '/archives',
-                component: archives
+                component: asyncLoad('amd/apps/archives/index')
             }, {
                 path: '/tags',
-                component: tags
+                component: asyncLoad('amd/apps/tags/index')
             }, {
                 path: '/about',
-                component: about
+                component: asyncLoad('amd/apps/about/index')
             }, {
                 path: '/board',
-                component: board
+                component: asyncLoad('amd/apps/board/index')
             }, {
                 path: '/admin',
-                component: admin
+                component: asyncLoad('amd/apps/admin/index'),
+                children: [
+                    {
+                        path: 'article',
+                        component: asyncLoad('amd/apps/article/index')
+                    }
+                ]
             }, {
                 path: '/article/:id',
-                component: article
+                component: asyncLoad('amd/components/article/index')
             }, {
                 path: '*',
-                component: notFound
+                component: asyncLoad('amd/components/notFound/index')
             }
         ]
     }),
 
     data() {
         return {
-            isAdmin: false,
+            isAdmin: true,
             showMenu: false,
             appState: [
                 {
@@ -103,7 +117,6 @@ const app = new Vue({
 
     watch: {
         $route(val, oldval) {
-            console.log(val.path);
             if (val.path == '/admin') {
                 this.isAdmin = true;
             } else {

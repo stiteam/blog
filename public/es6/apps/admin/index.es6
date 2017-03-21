@@ -6,6 +6,7 @@
  */
 
 import template from 'text!./view.html';
+import from 'css!./style.min';
 
 export default {
 
