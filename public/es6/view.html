@@ -16,7 +16,7 @@
         <!-- 菜单 -->
         <ul class="sti-header-menu" :class="showMenu?'sti-header-menu-show':''">
             <li v-for="app in appMenu">
-                <router-link v-text="app.name" :to="app.url" @click.native="collapse"></router-link>
+                <router-link v-text="app.name" :to="app.url" @click.native="collapse" :class="($route.path=='/'&&app.url=='/home')?'router-link-active':''"></router-link>
             </li>
         </ul>
 
