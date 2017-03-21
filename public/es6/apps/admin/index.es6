@@ -6,7 +6,7 @@
  */
 
 import template from 'text!./view.html';
-import from 'css!./style.min';
+import 'css!./style.min';
 
 export default {
 
