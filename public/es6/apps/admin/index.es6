@@ -12,4 +12,10 @@ export default {
 
     template,
 
+    created() {
+        $.getJSON('/api/getArticle/1', (res) => {
+            console.log(res);
+        });
+    }
+
 }

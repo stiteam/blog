@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -30,6 +31,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+// session配置
+app.use(['/api'], session({
+  secret: 'leesirbupt',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 3600000 * 24
+  }
+}));
 
 app.use('/api', api);
 
