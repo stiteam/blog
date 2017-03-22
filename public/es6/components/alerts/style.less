@@ -1,0 +1,32 @@
+@keyframes righteaseinAnimate {
+    0% {
+        transform: translateX(420px);
+        opacity: 0;
+    }
+    25% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    75% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(420px);
+        opacity: 0;
+    }
+}
+
+.alerts-wrap {
+    position: fixed;
+    display: inline-block;
+    width: 300px;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+}
+
+.alert-wrap {
+    animation: righteaseinAnimate 3s ease 1;
+    /*animation-fill-mode: forwards;*/
+}

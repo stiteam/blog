@@ -13,6 +13,7 @@ import template from 'text!./view.html';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
+import alertsComp from './components/alerts/index';
 
 // import home from './apps/home/index';
 // import archives from './apps/archives/index';
@@ -118,6 +119,10 @@ const app = new Vue({
 
     template,
 
+    components: {
+        'sti-alerts': alertsComp
+    },
+
     watch: {
         $route(val, oldval) {
             if (['/admin', '/login'].indexOf(val.matched[0].path) > -1 ) {
@@ -159,6 +164,11 @@ const app = new Vue({
     },
 
     mounted() {
+
+        this.$on('alert', (message, type) => {
+            this.$refs.alerts.alert(message, type);
+        });
+
     }
 
 });

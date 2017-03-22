@@ -6,9 +6,42 @@
  */
 
 import template from 'text!./view.html';
+import 'css!./style.min';
 
 export default {
 
-    template
+    template,
+
+    data() {
+        return {
+            username: '',
+            password: ''
+        }
+    },
+
+    mounted() {
+        $('#username').focus();
+    },
+
+    methods: {
+        login() {
+            let postData = {
+                username: this.username,
+                password: this.password
+            };
+
+            $.post('/api/login', postData, (res) => {
+                console.log(res);
+                if (res.status == -1) {
+                    this.$parent.$emit('alert', res.message, 'danger');
+                } else if (res.status == 200) {
+                    this.$router.push('/admin');
+                    this.$parent.$emit('alert', res.message, 'success');
+                } else {
+                    this.$parent.$emit('alert', res.message, 'danger');
+                }
+            });
+        }
+    }
 
 }

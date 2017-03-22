@@ -14,7 +14,7 @@ export default {
 
     created() {
 
-        $.getJSON('/api/loginInfo', (res) => {
+        $.get('/api/loginInfo', (res) => {
             console.log(res);
             if (res.code == -1) {
                 this.$router.push('/login');

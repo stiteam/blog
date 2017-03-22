@@ -21,13 +21,13 @@ router.get('/addUser', function () {
     })
 });
 
-router.get('/login', function (req, res, next) {
-    User.check('admin', 'admin123', (err, user) => {
+router.post('/login', function (req, res, next) {
+    User.check(req.body.username, req.body.password, (err, user) => {
         if (err) {
             console.log(err);
             res.json({
                 status: 500,
-                message: 'server wrong'
+                message: '服务器出错了！'
             })
         } else {
             if (user) {
@@ -35,12 +35,12 @@ router.get('/login', function (req, res, next) {
                 res.json({
                     status: 200,
                     // data: user,
-                    message: 'login success'
+                    message: '登录成功！'
                 })
             } else {
                 res.json({
                     status: -1,
-                    msg: 'login failed'
+                    message: '用户名或密码错误！'
                 })
             }
         }
