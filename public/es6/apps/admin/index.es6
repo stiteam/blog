@@ -13,9 +13,18 @@ export default {
     template,
 
     created() {
-        $.getJSON('/api/getArticle/1', (res) => {
+
+        $.getJSON('/api/loginInfo', (res) => {
             console.log(res);
+            if (res.code == -1) {
+                this.$router.push('/login');
+            } else if (res.code == 200) {
+                console.log('已登录');
+            } else {
+                console.log('出错了');
+            }
         });
+
     }
 
 }

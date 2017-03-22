@@ -25,17 +25,29 @@ router.get('/login', function (req, res, next) {
     User.check('admin', 'admin123', (err, user) => {
         if (err) {
             console.log(err);
-        } else {
-            req.session.uid = user._id;
             res.json({
-                data: user
+                status: 500,
+                message: 'server wrong'
             })
+        } else {
+            if (user) {
+                req.session.uid = user._id;
+                res.json({
+                    status: 200,
+                    // data: user,
+                    message: 'login success'
+                })
+            } else {
+                res.json({
+                    status: -1,
+                    msg: 'login failed'
+                })
+            }
         }
     })
 });
 
 router.get('/logout', function (req, res, next) {
-    // req.session.uid = null;
     req.session.destroy(function(err) {
         if (err) {
             console.log(err);
@@ -47,9 +59,20 @@ router.get('/logout', function (req, res, next) {
 })
 
 router.get('/loginInfo', function (req, res, next) {
-    res.json({
-        data: req.session.uid
-    })
+    if (req.session.uid) {
+        res.json({
+            code: 200,
+            data: {
+                uid: req.session.uid
+            },
+            message: '已登录'
+        })
+    } else {
+        res.json({
+            code: -1,
+            message: '未登录'
+        })
+    }
 });
 
 router.get('/getArticle/:id', function (req, res, next) {

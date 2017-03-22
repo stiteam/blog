@@ -38,7 +38,8 @@ app.use(['/api'], session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    maxAge: 3600000 * 24
+    // 过期时间7*24个小时
+    maxAge: 3600000 * 24 * 7
   }
 }));
 

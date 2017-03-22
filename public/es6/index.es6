@@ -73,12 +73,15 @@ const app = new Vue({
                 path: '/board',
                 component: asyncLoad('amd/apps/board/index')
             }, {
+                path: '/login',
+                component: asyncLoad('amd/apps/login/index')
+            }, {
                 path: '/admin',
                 component: asyncLoad('amd/apps/admin/index'),
                 children: [
                     {
-                        path: 'article',
-                        component: asyncLoad('amd/apps/article/index')
+                        path: 'login',
+                        component: asyncLoad('amd/apps/login/index')
                     }
                 ]
             }, {
@@ -117,7 +120,7 @@ const app = new Vue({
 
     watch: {
         $route(val, oldval) {
-            if (val.path == '/admin') {
+            if (['/admin', '/login'].indexOf(val.matched[0].path) > -1 ) {
                 this.isAdmin = true;
             } else {
                 this.isAdmin = false;
@@ -126,10 +129,6 @@ const app = new Vue({
     },
 
     created() {
-
-        if (this.$route.path == '/admin') {
-            this.isAdmin = true;
-        }
 
         this.appMenu = [
             {
