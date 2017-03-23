@@ -1,6 +1,6 @@
-<div class="alerts-wrap" v-show="empty">
-    <div v-for="(a, index) in alertList" class="alert-wrap alert" :class="a.type" role="alert" @animationend="remove(index)">
+<transition-group name="list-complete" tag="div" class="alerts-wrap">
+    <div v-for="a in alertList" :key="a.number" class="alert-wrap alert" :class="a.type" role="alert">
         {{a.message}}
-        <button type="button" class="close" @click="remove(alertList[index])" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" @click="remove(a.number)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
 </div>
