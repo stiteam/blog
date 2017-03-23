@@ -31,7 +31,7 @@ export default {
             };
 
             $.post('/api/login', postData, (res) => {
-                console.log(res);
+                // console.log(res);
                 if (res.status == -1) {
                     this.$parent.$emit('alert', res.message, 'danger');
                 } else if (res.status == 200) {

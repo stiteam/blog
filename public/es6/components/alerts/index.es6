@@ -31,16 +31,14 @@ export default {
     methods: {
 
         alert(message, type) {
-            console.log(this.alertList)
             if (this.alertList.length >= this.max) {
                 this.alertList.splice(0, this.alertList.length - this.max + 1);
             }
             let num = this.alertCnt ++;
             this.alertList.push({'message': message, 'number': num, 'type': this.typeFormatter(type ||'success')});
-            // this.remove();
             setTimeout( () => {
                 this.remove(num);
-            }, 2000)
+            }, 2000);
         },
 
         typeFormatter(type) {
@@ -48,25 +46,13 @@ export default {
         },
 
         remove(cnt) {
-            // console.log(cnt, 'cnt');
-            // console.log(this.alertList, 'alertList');
             for (let i in this.alertList) {
                 if (this.alertList[i].number == cnt) {
                     this.alertList.splice(i, 1);
                 }
             }
-            // console.log(this.alertList);
-            // this.alertList.splice(0, 1);
         }
 
-    },
-
-    computed : {
-
-        // empty() {
-        //     return this.alertList.length > 0;
-        // }
-        
     }
 
 }
