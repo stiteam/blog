@@ -7,6 +7,7 @@
 
 import template from 'text!./view.html';
 import 'css!./style.min';
+import {User} from '../../commons/user';
 
 export default {
 
@@ -17,6 +18,12 @@ export default {
             username: '',
             password: ''
         }
+    },
+
+    created() {
+        User.getLoginInfo().then( (res) => {
+            console.log(res, 1);
+        })
     },
 
     mounted() {
@@ -31,7 +38,6 @@ export default {
             };
 
             $.post('/api/login', postData, (res) => {
-                // console.log(res);
                 if (res.status == -1) {
                     this.$parent.$emit('alert', res.message, 'danger');
                 } else if (res.status == 200) {
