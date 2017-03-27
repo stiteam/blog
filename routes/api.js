@@ -3,22 +3,24 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Article = require('../models/article');
 var User = require('../models/user');
+var $util = require('../util/util');
 
-router.get('/addUser', function () {
-    var _user = new User({
-        username: 'admin',
-        password: 'admin123',
-        privilege: 1
-    })
-    _user.save((err, article) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json({
-                data: 1
-            })
-        }
-    })
+router.get('/addUser', function (req, res, next) {
+    $util.checkPrivilege(req, res, next);
+    // var _user = new User({
+    //     username: 'admin',
+    //     password: 'admin123',
+    //     privilege: 1
+    // })
+    // _user.save((err, article) => {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         res.json({
+    //             data: 1
+    //         })
+    //     }
+    // })
 });
 
 router.post('/login', function (req, res, next) {
@@ -54,25 +56,34 @@ router.get('/logout', function (req, res, next) {
         }
     })
     res.json({
-        data: 'success'
+        status: 200,
+        message: '注销成功'
     })
 })
 
 router.get('/loginInfo', function (req, res, next) {
-    if (req.session.uid) {
-        res.json({
-            code: 200,
-            data: {
-                uid: req.session.uid
-            },
-            message: '已登录'
-        })
-    } else {
-        res.json({
-            code: -1,
-            message: '未登录'
-        })
-    }
+    $util.checkPrivilege(req, res, next);
+    res.json({
+        status: 200,
+        data: {
+            uid: req.session.uid
+        },
+        message: '已登录'
+    });
+    // if (req.session.uid) {
+    //     res.json({
+    //         status: 200,
+    //         data: {
+    //             uid: req.session.uid
+    //         },
+    //         message: '已登录'
+    //     })
+    // } else {
+    //     res.json({
+    //         status: -1,
+    //         message: '未登录'
+    //     })
+    // }
 });
 
 router.get('/getArticle/:id', function (req, res, next) {

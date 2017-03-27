@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var articleSchema = new mongoose.Schema({
     title: String,
     author: String,
-    meta: {
-        createAt: {
+    time: {
+        create: {
             type: Date,
             default: Date.now()
         },
-        updateAt: {
+        update: {
             type: Date,
             default: Date.now()
         }
@@ -24,9 +24,9 @@ var articleSchema = new mongoose.Schema({
 
 articleSchema.pre('save', function (next) {
     if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now();
+        this.meta.create = this.meta.update = Date.now();
     } else {
-        this.meta.updateAt = Date.now();
+        this.meta.update = Date.now();
     }
     next();
 });

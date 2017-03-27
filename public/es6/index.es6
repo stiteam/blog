@@ -14,6 +14,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import alertsComp from './components/alerts/index';
+import {User} from './commons/user';
 
 // import home from './apps/home/index';
 // import archives from './apps/archives/index';
@@ -21,7 +22,6 @@ import alertsComp from './components/alerts/index';
 // import about from './apps/about/index';
 // import board from './apps/board/index';
 // import admin from './apps/admin/index';
-
 // import article from './components/article/index';
 // import notFound from './components/notFound/index';
 
@@ -75,7 +75,15 @@ const app = new Vue({
                 component: asyncLoad('amd/apps/board/index')
             }, {
                 path: '/login',
-                component: asyncLoad('amd/apps/login/index')
+                component: asyncLoad('amd/apps/login/index'),
+                beforeEnter: (to, from, next) => {
+                    User.getLoginInfo().then( (res) => {
+                        if (res.status == 200) {
+                            next('/admin');
+                        };
+                        next();
+                    })
+                }
             }, {
                 path: '/admin',
                 component: asyncLoad('amd/apps/admin/index'),
@@ -84,7 +92,15 @@ const app = new Vue({
                         path: 'login',
                         component: asyncLoad('amd/apps/login/index')
                     }
-                ]
+                ],
+                beforeEnter: (to, from, next) => {
+                    User.getLoginInfo().then( (res) => {
+                        if (res.status == -1) {
+                            next('/login');
+                        }
+                        next();
+                    })
+                }
             }, {
                 path: '/article/:id',
                 component: asyncLoad('amd/components/article/index')

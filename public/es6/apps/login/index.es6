@@ -7,7 +7,6 @@
 
 import template from 'text!./view.html';
 import 'css!./style.min';
-import {User} from '../../commons/user';
 
 export default {
 
@@ -18,12 +17,6 @@ export default {
             username: '',
             password: ''
         }
-    },
-
-    created() {
-        User.getLoginInfo().then( (res) => {
-            console.log(res, 1);
-        })
     },
 
     mounted() {
