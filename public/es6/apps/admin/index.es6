@@ -14,16 +14,24 @@ export default {
 
     created() {
 
-        // $.get('/api/loginInfo', (res) => {
-        //     console.log(res);
-        //     if (res.code == -1) {
-        //         this.$router.push('/login');
-        //     } else if (res.code == 200) {
-        //         console.log('已登录');
-        //     } else {
-        //         console.log('出错了');
-        //     }
-        // });
+        this.adminMenu = [
+            {
+                name: '首页',
+                url: '/admin/login'
+            }, {
+                name: '归档',
+                url: '/admin/archives'
+            }, {
+                name: '标签',
+                url: '/admin/tags'
+            }, {
+                name: '关于',
+                url: '/admin/about'
+            }, {
+                name: '留言',
+                url: '/admin/board'
+            }
+        ]
 
     }
 

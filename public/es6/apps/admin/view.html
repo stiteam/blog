@@ -1,5 +1,15 @@
 <div class="sti-content-wrap">
-    管理
-    <router-view></router-view>
-    <!-- <router-link :to="addArticle" v-text="添加文章"></router-link> -->
+    <div class="sti-admin-header">
+        <!-- 菜单 -->
+        <ul class="sti-admin-menu sti-menu">
+            <li v-for="app in adminMenu">
+                <router-link v-text="app.name" :to="app.url" :class="($route.path=='/admin'&&app.url=='/admin/home')?'router-link-active':''"></router-link>
+            </li>
+        </ul>
+    </div>
+
+    <div class="sti-admin-content">
+        <router-view></router-view>
+    </div>
+
 </div>

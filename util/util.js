@@ -9,6 +9,7 @@ var router = express.Router();
 
 module.exports = {
 
+    // 检查权限接口
     checkPrivilege: function (req, res, next) {
         if (!req.session.uid) {
             res.json({

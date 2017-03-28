@@ -8,7 +8,6 @@
         top: 0px;
         overflow-y: auto;
         height: 100%;
-        float: left;
         width: 240px;
 
         .sti-header-title {
@@ -32,40 +31,8 @@
         }
 
         .sti-header-menu {
-            background-color: #FFF;
             padding-top: 20px;
             padding-bottom: 15px;
-
-            li {
-                height: 40px;
-                line-height: 30px;
-                color: #000;
-
-                a {
-                    display: block;
-                    text-decoration: none;
-                    padding: 5px 20px;
-                    color: #000;
-                    font-size: 13px;
-                
-                    &.router-link-active {
-                        background-color: #F9F9F9;
-                        position: relative;
-
-                        &:after {
-                            content: " ";
-                            position: absolute;
-                            top: 50%;
-                            margin-top: -3px;
-                            right: 15px;
-                            width: 6px;
-                            height: 6px;
-                            border-radius: 50%;
-                            background-color: #bbb;
-                        }
-                    }
-                }
-            }
         }
 
         .sti-header-info {
@@ -201,6 +168,50 @@
     .sti-content {
         margin-left: 0px;
         padding: 0px;
+        background-color: #F5F7F9;
     }
 
 }
+
+.sti-menu {
+    background-color: #FFF;
+
+    li {
+        height: 40px;
+        line-height: 30px;
+        color: #000;
+
+        a {
+            display: block;
+            text-decoration: none;
+            padding: 5px 20px;
+            color: #000;
+            font-size: 13px;
+        
+            &.router-link-active {
+                background-color: #F9F9F9;
+                position: relative;
+
+                &:after {
+                    content: " ";
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -3px;
+                    right: 15px;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background-color: #bbb;
+                }
+            }
+        }
+    }
+}
+
+/*.clearfix:after{
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}*/
