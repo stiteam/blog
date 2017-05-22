@@ -11,12 +11,13 @@ env:
  browser: true
  es6: true
  commonjs: true
- jquery: true
+# jquery: true
 # 全局变量
 globals:
   _: true
   http: true
   StiVue: true
+  $: true
 # 引用库
 extends: 'eslint:recommended'
 
@@ -43,7 +44,7 @@ rules:
  # 建议不必要的字符串拼接
  no-useless-concat: 1
  # 禁止变量声明覆盖外层作用域
- no-shadow: [1, {builtinGlobals: true, allow: [state, resolve, reject, done, localStorage, event, top, http, StiVue]}]
+ no-shadow: [1, {builtinGlobals: true, allow: [$, state, resolve, reject, done, localStorage, event, top, http, StiVue]}]
  # 允许出现未使用过的变量
  no-unused-vars: 0
  # 将立即执行的函数包裹起来
