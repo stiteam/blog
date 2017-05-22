@@ -24,18 +24,18 @@ export default {
         return {
             alertList: [],
             alertCnt: 0
-        }
+        };
     },
-
 
     methods: {
 
         alert(message, type) {
+            let num = this.alertCnt ++;
+
             if (this.alertList.length >= this.max) {
                 this.alertList.splice(0, this.alertList.length - this.max + 1);
             }
-            let num = this.alertCnt ++;
-            this.alertList.push({'message': message, 'number': num, 'type': this.typeFormatter(type ||'success')});
+            this.alertList.push({'message': message, 'number': num, 'type': this.typeFormatter(type || 'success')});
             setTimeout( () => {
                 this.remove(num);
             }, 2000);
@@ -55,4 +55,4 @@ export default {
 
     }
 
-}
+};

@@ -16,7 +16,7 @@ export default {
         return {
             username: '',
             password: ''
-        }
+        };
     },
 
     mounted() {
@@ -43,4 +43,4 @@ export default {
         }
     }
 
-}
+};

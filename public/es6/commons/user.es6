@@ -4,6 +4,6 @@ let User = {
         return $.get('/api/loginInfo');
     }
 
-}
+};
 
 export {User};

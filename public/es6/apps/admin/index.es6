@@ -31,8 +31,8 @@ export default {
                 name: '留言',
                 url: '/admin/board'
             }
-        ]
+        ];
 
     }
 
-}
+};

@@ -45,7 +45,7 @@ function asyncLoad(url) {
         require([url], function (comp) {
             resolve(comp.default);
         });
-    }
+    };
 }
 
 const app = new Vue({
@@ -80,9 +80,9 @@ const app = new Vue({
                     User.getLoginInfo().then( (res) => {
                         if (res.status == 200) {
                             next('/admin');
-                        };
+                        }
                         next();
-                    })
+                    });
                 }
             }, {
                 path: '/admin',
@@ -99,7 +99,7 @@ const app = new Vue({
                             next('/login');
                         }
                         next();
-                    })
+                    });
                 }
             }, {
                 path: '/article/:id',
@@ -130,7 +130,7 @@ const app = new Vue({
                     url: '/tags'
                 }
             ]
-        }
+        };
     },
 
     template,
@@ -168,7 +168,7 @@ const app = new Vue({
                 name: '留言',
                 url: '/board'
             }
-        ]
+        ];
     },
 
     methods: {
