@@ -11,6 +11,7 @@ STI team是360企业安全集团天眼产品事业部NGSOC项目组的前端团�
 1. `git clone https://github.com/stiteam/blog.git`
 2. 打开终端，进入`blog`文件夹，执行`npm install`安装express所需依赖
 3. 进入`public`目录，执行`npm install`安装Gulp构建工具的依赖和项目依赖
-4. 在`public`目录下，执行`gulp`命令编译`es6`文件夹里的源文件，生成编译后的文件在`amd`文件夹中
+4. 安装`mongodb`并新建一个数据库，命名为`blog`，使用`mongod`命令启动数据库
 5. 在`blog`路径下执行`npm start`
-6. 在浏览器中打开`localhost:3000`即可
+6. 在`public`目录下，执行`gulp`命令编译`es6`文件夹里的源文件，生成编译后的文件在`amd`文件夹中
+7. 在浏览器中打开`localhost:3000`即可访问
