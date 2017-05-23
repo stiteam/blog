@@ -10,12 +10,19 @@ var router = express.Router();
 module.exports = {
 
     // 检查权限接口
-    checkPrivilege: function (req, res, next) {
-        if (!req.session.uid) {
-            res.json({
-                status: -1,
-                message: '请登录'
-            });
+    // checkPrivilege: function (req, res, next) {
+    //     if (!req.session.uid) {
+    //         res.json({
+    //             status: -1,
+    //             message: '请登录'
+    //         });
+    //     }
+    // }
+    checkPrivilege: function (req) {
+        if (req.session.uid) {
+            return req.session.privilege;
+        } else {
+            return -1;
         }
     }
 

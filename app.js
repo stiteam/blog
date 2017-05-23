@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -40,7 +41,10 @@ app.use(['/api'], session({
   cookie: {
     // 过期时间7*24个小时
     maxAge: 3600000 * 24 * 7
-  }
+  },
+  store: new MongoStore({
+    url: 'mongodb://localhost/blog_session'
+  })
 }));
 
 app.use('/api', api);

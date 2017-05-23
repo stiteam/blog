@@ -34,6 +34,7 @@ router.post('/login', function (req, res, next) {
         } else {
             if (user) {
                 req.session.uid = user._id;
+                req.session.privilege = user.privilege;
                 res.json({
                     status: 200,
                     // data: user,
@@ -62,28 +63,23 @@ router.get('/logout', function (req, res, next) {
 })
 
 router.get('/loginInfo', function (req, res, next) {
-    $util.checkPrivilege(req, res, next);
-    res.json({
-        status: 200,
-        data: {
-            uid: req.session.uid
-        },
-        message: '已登录'
-    });
-    // if (req.session.uid) {
-    //     res.json({
-    //         status: 200,
-    //         data: {
-    //             uid: req.session.uid
-    //         },
-    //         message: '已登录'
-    //     })
-    // } else {
-    //     res.json({
-    //         status: -1,
-    //         message: '未登录'
-    //     })
-    // }
+    // var privilege = $util.checkPrivilege(req);
+    if ($util.checkPrivilege(req) == -1) {
+        res.json({
+            status: -1,
+            data: {
+            },
+            message: '未登录'
+        });
+    } else {
+        res.json({
+            status: 200,
+            data: {
+                uid: req.session.uid
+            },
+            message: '已登录'
+        });
+    }
 });
 
 router.get('/getArticle/:id', function (req, res, next) {
