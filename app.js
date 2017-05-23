@@ -43,7 +43,7 @@ app.use(['/api'], session({
     maxAge: 3600000 * 24 * 7
   },
   store: new MongoStore({
-    url: 'mongodb://localhost/blog_session'
+    url: 'mongodb://localhost/blog'
   })
 }));
 
