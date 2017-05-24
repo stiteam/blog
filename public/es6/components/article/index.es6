@@ -9,6 +9,20 @@ import template from 'text!./view.html';
 
 export default {
 
-    template
+    template,
+
+    data() {
+        return {
+            id: this.$route.params.id,
+        };
+    },
+
+    created() {
+        console.log(this.id, 1);
+    },
+
+    mounted() {
+        console.log(this.id);
+    }
 
 };

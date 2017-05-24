@@ -23,6 +23,7 @@ router.get('/addUser', function (req, res, next) {
     // })
 });
 
+// 登录
 router.post('/login', function (req, res, next) {
     User.check(req.body.username, req.body.password, (err, user) => {
         if (err) {
@@ -50,6 +51,7 @@ router.post('/login', function (req, res, next) {
     })
 });
 
+// 登出
 router.get('/logout', function (req, res, next) {
     req.session.destroy(function(err) {
         if (err) {
@@ -62,6 +64,7 @@ router.get('/logout', function (req, res, next) {
     })
 })
 
+// 查询登录信息
 router.get('/loginInfo', function (req, res, next) {
     // var privilege = $util.checkPrivilege(req);
     if ($util.checkPrivilege(req) == -1) {
