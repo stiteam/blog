@@ -31,6 +31,14 @@ require.config({
         name: 'vuex',
         location: 'node_modules/vuex',
         main: 'dist/vuex.min'
+    }, {
+        name: 'marked',
+        location: 'node_modules/marked',
+        main: 'marked.min'
+    }, {
+        name: 'simplemde',
+        location: 'node_modules/simplemde',
+        main: 'dist/simplemde.min'
     }]
 });
 

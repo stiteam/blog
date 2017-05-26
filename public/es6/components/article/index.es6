@@ -2,10 +2,11 @@
  * 首页视图
  * 功能: 文章页面
  * @author: lzhbupt@163.com
- * @time: 2017年03月05日18:20:20
+ * @time: 2017年05月26日15:15:35
  */
 
 import template from 'text!./view.html';
+import marked from 'marked';
 
 export default {
 
@@ -14,15 +15,14 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
+            md: marked('i am a ~~tast~~ **test**.')
         };
     },
 
     created() {
-        console.log(this.id, 1);
     },
 
     mounted() {
-        console.log(this.id);
     }
 
 };
