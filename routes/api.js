@@ -85,7 +85,7 @@ router.get('/loginInfo', function (req, res, next) {
     }
 });
 
-router.get('/getArticle/:id', function (req, res, next) {
+router.get('/addArticle/:id', function (req, res, next) {
     // res.render('index', { title: 'STI team' });
     // res.render('index');
     var _article = new Article({
@@ -110,6 +110,20 @@ router.get('/getArticle/:id', function (req, res, next) {
     // res.json({
     //     code: req.params.id
     // })
+});
+
+router.get('/getArticle', function (req, res, next) {
+    res.json({
+        status: 200,
+        data: {
+            id: req.params.id,
+            title: '这是一篇测试文章',
+            createTime: 1495872890000,
+            modifyTime: 1495872890000,
+            content: 'i am a ~~tast~~ **test**.'
+        },
+        message: 'success'
+    });
 });
 
 module.exports = router;

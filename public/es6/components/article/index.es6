@@ -15,11 +15,25 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            md: marked('i am a ~~tast~~ **test**.')
+            title: '',
+            createTime: 1495872890000,
+            modifyTime: 1495872890000,
+            content: 'i am a ~~tast~~ **test**.'
         };
     },
 
     created() {
+        let self = this;
+
+        // this.content = marked(this.content);
+        $.get('/api/getArticle', {id: this.id}, (res) => {
+            if (res.status == 200) {
+                let data = res.data;
+                self.title = data.title;
+                self.createTime = data.createTime;
+                self.content = marked(data.content);
+            }
+        });
     },
 
     mounted() {
