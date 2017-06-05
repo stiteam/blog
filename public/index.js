@@ -39,6 +39,10 @@ require.config({
         name: 'simplemde',
         location: 'node_modules/simplemde',
         main: 'dist/simplemde.min'
+    }, {
+        name: 'moment',
+        location: 'node_modules/moment',
+        main: 'min/moment-with-locales.min'
     }]
 });
 

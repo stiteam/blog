@@ -120,6 +120,7 @@ router.get('/getArticle', function (req, res, next) {
             title: '这是一篇测试文章',
             createTime: 1495872890000,
             modifyTime: 1495872890000,
+            category: '测试',
             content: 'i am a ~~tast~~ **test**.'
         },
         message: 'success'

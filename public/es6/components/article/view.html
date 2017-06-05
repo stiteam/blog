@@ -1,5 +1,8 @@
-<div>
-    {{title}}
-    <p>{{$route.params.id}}</p>
+<div class="sti-article-wrap">
+    <h1 class="sti-article-title" v-html="title"></h1>
+    <div class="sti-article-meta">
+        <span class="sti-article-meta-time">发表于 {{createTime}}</span>
+        <span class="sti-article-meta-category">分类于 <a :href="'/category/'+category">{{category}}</a></span>
+    </div>
     <div v-html="content"></div>
 </div>

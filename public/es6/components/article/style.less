@@ -1,0 +1,40 @@
+.sti-article-wrap {
+    padding-top: 20px;
+
+    .sti-article-title {
+        font-size: 26px;
+        text-align: center;
+        word-break: break-word;
+        font-weight: 300;
+    }
+
+    .sti-article-meta {
+        margin: 3px 0 60px 0;
+        color: #999;
+        font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-size: 12px;
+        text-align: center;
+
+        & span:after {
+            content: '|';
+            padding-left: 3px;
+        }
+
+        & span:last-child:after {
+            content: '';
+            padding-left: 0px;
+        }
+
+        a {
+            color: #555;
+            text-decoration: none;
+            border-bottom: 1px solid #999;
+            word-wrap: break-word;
+
+            &:hover {
+                color: #222;
+                border-bottom-color: #222;
+            }
+        }
+    }
+}
