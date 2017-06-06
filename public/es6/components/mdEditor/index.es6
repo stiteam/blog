@@ -29,6 +29,7 @@ export default {
             element: $('#a')[0],
             // toolbarTips: false
         });
+        
         t.value('i am a ~~tast~~ **test**.');
         // console.log($);
     }

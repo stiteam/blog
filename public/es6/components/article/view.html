@@ -1,8 +1,11 @@
 <div class="sti-article-wrap">
-    <h1 class="sti-article-title" v-html="title"></h1>
+    <h1 class="sti-article-title" v-if="hasTitleLink">
+        <a :href="'/article/'+id">{{title}}</a>
+    </h1>
+    <h1 class="sti-article-title" v-html="title" v-else></h1>
     <div class="sti-article-meta">
-        <span class="sti-article-meta-time">发表于 {{createTime}}</span>
-        <span class="sti-article-meta-category">分类于 <a :href="'/category/'+category">{{category}}</a></span>
+        <span class="sti-article-meta-time">发表于{{createTime}}</span>
+        <span class="sti-article-meta-category">分类于<a :href="'/category/'+category">{{category}}</a></span>
     </div>
     <div v-html="content"></div>
 </div>

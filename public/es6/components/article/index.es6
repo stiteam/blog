@@ -1,6 +1,6 @@
 /**
- * 首页视图
- * 功能: 文章页面
+ * 文章组件
+ * 功能: 文章组件
  * @author: lzhbupt@163.com
  * @time: 2017年05月26日15:15:35
  */
@@ -14,9 +14,22 @@ export default {
 
     template,
 
+    props: {
+        id: {
+            type: Number,
+            required: true,
+            validator: (value) => value >= 0
+        },
+        hasTitleLink: {
+            type: Boolean,
+            required: false,
+            default: false
+        }
+    },
+
     data() {
         return {
-            id: this.$route.params.id,
+            // id: this.$route.params.id,
             title: '',
             createTime: '',
             modifyTime: '',
@@ -31,6 +44,7 @@ export default {
         $.get('/api/getArticle', {id: this.id}, (res) => {
             if (res.status == 200) {
                 let data = res.data;
+
                 self.title = data.title;
                 self.createTime = moment(data.createTime).format('YYYY-MM-DD HH:mm:ss');
                 self.category = data.category;

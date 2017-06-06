@@ -103,7 +103,7 @@ const app = new Vue({
                 }
             }, {
                 path: '/article/:id',
-                component: asyncLoad('amd/components/article/index')
+                component: asyncLoad('amd/apps/article/index')
             }, {
                 path: '*',
                 component: asyncLoad('amd/components/notFound/index')
