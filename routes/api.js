@@ -85,46 +85,75 @@ router.get('/loginInfo', function (req, res, next) {
     }
 });
 
-router.get('/addArticle/:id', function (req, res, next) {
+router.get('/addArticle', function (req, res, next) {
     // res.render('index', { title: 'STI team' });
     // res.render('index');
-    var _article = new Article({
-        name: 'lizhenghua'
-    });
-    _article.save((err, article) => {
-        if (err) {
-            // console.log(err);
-        } else {
-            // console.log(article);
-            Article.fetch((err, article) => {
-                if (err) {
-                    console.log(err);
-                } else {
-                    res.json({
-                        data: article
-                    })
-                }
-            })
-        }
-    })
+    var privilege = $util.checkPrivilege(req);
+
+    if (privilege == 1) {
+        var _article = new Article({
+            title: '测试',
+            author: '李政华',
+            tags: ['test'],
+            content: 'I am a ~~tast~~ **test**.'
+        });
+        _article.save((err, article) => {
+            if (err) {
+                // console.log(err);
+            } else {
+                // console.log(article);
+                Article.fetch((err, article) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        res.json({
+                            data: article
+                        })
+                    }
+                })
+            }
+        })
+    } else {
+        res.json({
+            status: -1,
+            data: {
+            },
+            message: '没有权限'
+        });
+    }
     // res.json({
     //     code: req.params.id
     // })
 });
 
+/**
+ * 获取文章的接口，仅有id时获取单篇文章，有id和limit的时候，获取从id开始之后的limit篇文章
+ */
 router.get('/getArticle', function (req, res, next) {
-    res.json({
-        status: 200,
-        data: {
-            id: req.params.id,
-            title: '这是一篇测试文章',
-            createTime: 1495872890000,
-            modifyTime: 1495872890000,
-            category: '测试',
-            content: 'i am a ~~tast~~ **test**.'
-        },
-        message: 'success'
-    });
+    // if (req.params.id) {
+    //     if (req.params.limit) {
+
+    //     } else {
+            res.json({
+                status: 200,
+                data: {
+                    id: req.params.id,
+                    title: '这是一篇测试文章',
+                    createTime: 1495872890000,
+                    updateTime: 1495872890000,
+                    category: '测试',
+                    content: 'i am a ~~tast~~ **test**.'
+                },
+                message: 'success'
+            });
+    //     }
+    // } else {
+    //     res.json({
+    //         status: -1,
+    //         data: [],
+    //         message: '参数错误'
+    //     })
+    // }
 });
 
 module.exports = router;

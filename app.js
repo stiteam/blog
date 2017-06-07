@@ -6,13 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-
 var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/blog');
+var autoIncrement = require('mongoose-auto-increment');
 
-// HTML5 History模式后端支持插件
-// https://github.com/bripkens/connect-history-api-fallback
+mongoose.Promise = require('bluebird');
+var connection = mongoose.connect('mongodb://localhost/blog');
+autoIncrement.initialize(connection);
+
+// start HTML5 History mode
 var history = require('connect-history-api-fallback');
 
 var index = require('./routes/index');

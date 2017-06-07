@@ -43,6 +43,10 @@ require.config({
         name: 'moment',
         location: 'node_modules/moment',
         main: 'min/moment-with-locales.min'
+    }, {
+        name: 'vue-infinite-scroll',
+        location: 'node_modules/vue-infinite-scroll',
+        main: 'vue-infinite-scroll'
     }]
 });
 

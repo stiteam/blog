@@ -32,7 +32,7 @@ export default {
             // id: this.$route.params.id,
             title: '',
             createTime: '',
-            modifyTime: '',
+            updateTime: '',
             category: '',
             content: ''
         };

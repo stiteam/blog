@@ -1,4 +1,7 @@
 <div>
-主页
-<div>test</div>
+    <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+        <div v-for="d in data">
+            {{d.name}}
+        </div>
+    </div>
 </div>
