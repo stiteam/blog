@@ -48,6 +48,7 @@ export default {
                 } else {
                     console.log(res.message);
                 }
+                console.log(self.articles);
             });
         }
     },

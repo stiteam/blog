@@ -127,15 +127,20 @@ router.get('/addArticle', function (req, res, next) {
  * 获取文章的接口，仅有id时获取单篇文章，有id和limit的时候，获取从id开始之后的limit篇文章
  */
 router.get('/getArticle', function (req, res, next) {
-    console.log(req.query.page);
     if (req.query.id) {
         Article.findById(parseInt(req.query.id), (err, article) => {
             if (err) {
-                console.log(err);
+                res.json({
+                    status: -1,
+                    data: {
+                    },
+                    message: '参数错误'
+                })
+                // console.log(err);
             } else {
                 res.json({
                     status: 200,
-                    data: article,
+                    data: article[0],
                     message: 'success'
                 });
             }
@@ -144,7 +149,13 @@ router.get('/getArticle', function (req, res, next) {
         var limit = parseInt(req.query.limit) || 10;
         Article.fetch(parseInt(req.query.page), limit, (err, articles) => {
             if (err) {
-                console.log(err);
+                res.json({
+                    status: -1,
+                    data: {
+                    },
+                    message: '参数错误'
+                })
+                // console.log(err);
             } else {
                 res.json({
                     status: 200,

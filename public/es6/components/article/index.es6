@@ -33,13 +33,20 @@ export default {
 
     data() {
         return {
-            // id: this.$route.params.id,
+            // id: this.data.id || null,
             title: '',
             createTime: '',
             updateTime: '',
             category: '',
-            content: ''
+            content: '',
+            notFound: false
         };
+    },
+
+    computed: {
+        url() {
+            return '/article/' + this.id;
+        }
     },
 
     created() {
@@ -48,11 +55,12 @@ export default {
         if (this.data) {
             let data = this.data;
 
+            this.id = data.id;
             this.title = data.title;
             this.createTime = moment(data.createTime).format('YYYY-MM-DD HH:mm:ss');
             this.category = data.category;
             this.content = marked(data.content);
-        } else {
+        } else if (this.id) {
             $.get('/api/getArticle', {id: this.id}, (res) => {
                 if (res.status == 200) {
                     let data = res.data;
@@ -61,12 +69,17 @@ export default {
                     self.createTime = moment(data.createTime).format('YYYY-MM-DD HH:mm:ss');
                     self.category = data.category;
                     self.content = marked(data.content);
+                } else {
+                    self.notFound = true;
                 }
             });
+        } else {
+            console.log('参数错误');
         }
     },
 
     mounted() {
+        // console.log(this.id);
     }
 
 };
