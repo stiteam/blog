@@ -102,7 +102,7 @@ router.get('/addArticle', function (req, res, next) {
                 // console.log(err);
             } else {
                 // console.log(article);
-                Article.fetch((err, article) => {
+                Article.findAll((err, article) => {
                     if (err) {
                         console.log(err);
                     } else {
@@ -121,39 +121,46 @@ router.get('/addArticle', function (req, res, next) {
             message: '没有权限'
         });
     }
-    // res.json({
-    //     code: req.params.id
-    // })
 });
 
 /**
  * 获取文章的接口，仅有id时获取单篇文章，有id和limit的时候，获取从id开始之后的limit篇文章
  */
 router.get('/getArticle', function (req, res, next) {
-    // if (req.params.id) {
-    //     if (req.params.limit) {
-
-    //     } else {
-            res.json({
-                status: 200,
-                data: {
-                    id: req.params.id,
-                    title: '这是一篇测试文章',
-                    createTime: 1495872890000,
-                    updateTime: 1495872890000,
-                    category: '测试',
-                    content: 'i am a ~~tast~~ **test**.'
-                },
-                message: 'success'
-            });
-    //     }
-    // } else {
-    //     res.json({
-    //         status: -1,
-    //         data: [],
-    //         message: '参数错误'
-    //     })
-    // }
+    console.log(req.query.page);
+    if (req.query.id) {
+        Article.findById(parseInt(req.query.id), (err, article) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json({
+                    status: 200,
+                    data: article,
+                    message: 'success'
+                });
+            }
+        })
+    } else if (req.query.page) {
+        var limit = parseInt(req.query.limit) || 10;
+        Article.fetch(parseInt(req.query.page), limit, (err, articles) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json({
+                    status: 200,
+                    data: articles,
+                    message: 'success'
+                })
+            }
+        })
+    } else {
+        res.json({
+            status: -1,
+            data: {
+            },
+            message: '参数错误'
+        })
+    };
 });
 
 module.exports = router;

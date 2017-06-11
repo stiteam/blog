@@ -6,6 +6,7 @@
  */
 
 import template from 'text!./view.html';
+import articleComp from '../../components/article/index';
 import infiniteScroll from 'vue-infinite-scroll';
 
 export default {
@@ -16,25 +17,42 @@ export default {
         infiniteScroll
     },
 
+    components: {
+        'sti-article': articleComp
+    },
+
     data() {
         return {
-            data: [],
+            articles: [],
             busy: false,
+            page: 0,
+            limit: 10,
             count: 0
-        }
+        };
     },
 
     methods: {
         loadMore: function() {
             this.busy = true;
+            let self = this;
 
-            setTimeout(() => {
-                for (var i = 0, j = 10; i < j; i++) {
-                    this.data.push({ name: this.count ++ });
+            $.get('/api/getArticle', {page: this.page, limit: this.limit}, (res) => {
+                if (res.status == 200) {
+                    self.articles = self.articles.concat(res.data);
+                    if (self.articles.length == 10) {
+                        self.page ++;
+                        self.busy = false;
+                    } else {
+                        // 没有数据了
+                    }
+                } else {
+                    console.log(res.message);
                 }
-                this.busy = false;
-            }, 1000);
+            });
         }
+    },
+
+    created() {
     }
 
 };

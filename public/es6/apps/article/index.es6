@@ -15,11 +15,11 @@ export default {
     data() {
         return {
             id: this.$route.params.id
-        }
+        };
     },
 
     components: {
-        'ati-article': articleComp
+        'sti-article': articleComp
     }
 
 };

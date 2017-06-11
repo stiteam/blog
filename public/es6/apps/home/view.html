@@ -1,7 +1,7 @@
 <div>
     <div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
-        <div v-for="d in data">
-            {{d.name}}
-        </div>
+        <template v-for="a in articles">
+            <sti-article :id="a.id" :has-title-link="true" :data="a"></sti-article>
+        </template>
     </div>
 </div>

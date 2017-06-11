@@ -24,6 +24,10 @@ export default {
             type: Boolean,
             required: false,
             default: false
+        },
+        data: {
+            type: Object,
+            required: false
         }
     },
 
@@ -41,16 +45,25 @@ export default {
     created() {
         let self = this;
 
-        $.get('/api/getArticle', {id: this.id}, (res) => {
-            if (res.status == 200) {
-                let data = res.data;
+        if (this.data) {
+            let data = this.data;
 
-                self.title = data.title;
-                self.createTime = moment(data.createTime).format('YYYY-MM-DD HH:mm:ss');
-                self.category = data.category;
-                self.content = marked(data.content);
-            }
-        });
+            this.title = data.title;
+            this.createTime = moment(data.createTime).format('YYYY-MM-DD HH:mm:ss');
+            this.category = data.category;
+            this.content = marked(data.content);
+        } else {
+            $.get('/api/getArticle', {id: this.id}, (res) => {
+                if (res.status == 200) {
+                    let data = res.data;
+
+                    self.title = data.title;
+                    self.createTime = moment(data.createTime).format('YYYY-MM-DD HH:mm:ss');
+                    self.category = data.category;
+                    self.content = marked(data.content);
+                }
+            });
+        }
     },
 
     mounted() {
