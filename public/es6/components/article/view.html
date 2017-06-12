@@ -3,7 +3,7 @@
 </div>
 <div class="sti-article-wrap" v-else>
     <h1 class="sti-article-title" v-if="hasTitleLink">
-        <a :href="url">{{title}}</a>
+        <a :href="url" @click.prevent="$router.push(url)">{{title}}</a>
     </h1>
     <h1 class="sti-article-title" v-html="title" v-else></h1>
     <div class="sti-article-meta">

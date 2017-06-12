@@ -137,6 +137,12 @@ router.get('/getArticle', function (req, res, next) {
                     message: '参数错误'
                 })
                 // console.log(err);
+            } else if (article.length == 0) {
+                res.json({
+                    status: -1,
+                    data: {},
+                    message: '文章未找到'
+                });
             } else {
                 res.json({
                     status: 200,
